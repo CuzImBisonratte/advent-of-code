@@ -1,13 +1,12 @@
 // Create all needed variables
 var horizontal = 0;
 var vertical = 0;
-var aim = 0;
 
 // Get the filesystem module
 var fs = require('fs');
 
 // Read the file input.txt line by line
-fs.readFile('../input.txt', 'utf8', function(err, data) {
+fs.readFile('input.txt', 'utf8', function(err, data) {
     if (err) throw err;
 
     // Split the file into an array of lines
@@ -34,9 +33,6 @@ fs.readFile('../input.txt', 'utf8', function(err, data) {
             // Add the number of steps to the horizontal variable
             horizontal += steps;
 
-            // Add (aim * steps) to the vertical variable
-            vertical += (aim * steps);
-
         } // Check if the current line starts with "down"
         else if (line.startsWith("down")) {
 
@@ -46,8 +42,8 @@ fs.readFile('../input.txt', 'utf8', function(err, data) {
             // Get the number of steps
             var steps = parseInt(words[1]);
 
-            // Add the number of steps to the aim variable
-            aim += steps;
+            // Subtract the number of steps to the vertical variable
+            vertical += steps;
 
         } // Check if the current line starts with "up"
         else if (line.startsWith("up")) {
@@ -58,8 +54,8 @@ fs.readFile('../input.txt', 'utf8', function(err, data) {
             // Get the number of steps
             var steps = parseInt(words[1]);
 
-            // Add the number of steps to the aim variable
-            aim -= steps;
+            // Add the number of steps to the vertical variable
+            vertical -= steps;
 
         } // Error output 
         else {
